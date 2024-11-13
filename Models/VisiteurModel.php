@@ -1,5 +1,5 @@
 <?php
-require_once("./models/db.class.php");
+require_once("./Models/db.class.php");
 
 class VisiteurModel extends db
 {
