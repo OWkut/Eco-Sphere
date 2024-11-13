@@ -1,49 +1,44 @@
 <?php
-require_once("./models/db.class.php");
+require_once("./Models/db.class.php");
 
 class VisiteurModel extends db
 {
-
-    public function creer_compte($email, $password)
+    private function getPasswordUser($email)
     {
-        $postData = [
-            'email' => $email,
-            'psw' => $password,
-        ];
-        $ref_table = "Users/Eleves";
-        $this->getBdd()->getReference($ref_table)->push($postData);
+        $req = "SELECT psw, role FROM users WHERE email = :email";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return ['psw'=>$resultat['psw'],
+        'role'=>$resultat['role']];
     }
 
-    public function connexion($email, $password)
+    public function connexionValide($email, $password)
     {
-        $roles = ['Admins', 'Eleves', 'Profs'];
-        foreach ($roles as $role) {
-            $userData = $this->getUserData($role, $email);
-            if ($userData) {
-                $passwordBD = $userData['userData']['psw'];
-                if ($password === $passwordBD) {
-                    $_SESSION['profil'] = [
-                        "email" => $email,
-                        "role" => $role
-                    ];
-                    return true;
-                }
-            }
-        }
-    }
-
-    private function getUserData($role, $email)
-    {
-        $reference = $this->getBdd()->getReference("Users/" . $role);
-        $users = $reference->getValue();
-        if ($users) {
-            foreach ($users as $userId => $userData) {
-                if (isset($userData['email']) && $userData['email'] === $email) {
-                    echo "<script>console.log('" . $email . "');</script>";
-                    return ['userData' => $userData, 'role' => $role];
-                }
-            }
+        $data = $this->getPasswordUser($email);
+        $passwordBD=$data['psw'];
+        $role=$data['role'];
+        if(password_verify($password,$passwordBD)){
+            echo("a");
+            return $role;
         }
         return null;
+    }
+
+    public function inscription($nom,$prenom,$email,$telephone,$info,$password){
+        $req = "INSERT INTO users(email,psw,tel,infos,nom,prenom) VALUES (:email, :psw, :tel, :infos, :nom, :prenom)";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":nom", $nom, PDO::PARAM_STR);
+        $stmt->bindValue(":prenom", $prenom, PDO::PARAM_STR);
+        $stmt->bindValue(":psw", $password, PDO::PARAM_STR);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->bindValue(":tel",$telephone,PDO::PARAM_STR);
+        $stmt->bindValue(":infos",$info,PDO::PARAM_STR);
+        $stmt->execute();
+        $estModifier = ($stmt->rowCount() > 0);
+        $stmt->closeCursor();
+        return $estModifier;
     }
 }

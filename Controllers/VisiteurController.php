@@ -38,26 +38,33 @@ class VisiteurController extends MainController{
         $this->genererPage($data_page);
     }
 
-    public function valider_inscription($email, $password) {
-        $this->VisiteurModel->creer_compte($email, $password);
-        $_SESSION['profil'] = [
-            "email" => $email,
-            "role" => "Eleves"
-        ];
-        header("Location: " . URL . "accueil");
-    }
 
     public function valider_connexion($email, $password){
-        if ($this->VisiteurModel->connexion($email, $password)) {
+        $role=$this->VisiteurModel->connexionValide($email, $password);
+        /*if ($role!=null) {
+            $_SESSION['profil'] = [
+                "email" => $email,
+                "role" =>$role
+            ];
            header("Location: " . URL . "accueil");
         } else {
             header("Location: " . URL . "connexion");
-        }
+        }*/
     }
 
     public function deconnexion(){
         unset($_SESSION['profil']);
         header("Location: " . URL . "accueil");
+    }
+
+    public function valider_inscription($nom,$prenom,$email,$telephone,$info,$password){
+        $_SESSION['profil'] = [
+            "email" => $email,
+            "role" =>"Utilisateurs",
+        ];
+        $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
+        $this->VisiteurModel->inscription($nom,$prenom,$email,$telephone,$info,$passwordCrypte);
+        header("Location: ". URL . "accueil");
     }
 
 }

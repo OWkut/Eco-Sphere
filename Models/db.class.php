@@ -3,39 +3,16 @@
 abstract class db
 {
     private static $pdo;
-    private static $storage;
 
-    private static function setBdd()
-    {
-        $factory = (new Factory)
-            ->withServiceAccount('edusphere-52d6b-firebase-adminsdk-ovunl-2924b5ced8.json')
-            ->withDatabaseUri('https://edusphere-52d6b-default-rtdb.firebaseio.com/');
-
-        self::$pdo = $factory->createDatabase();
+    private static function setBdd(){
+        self::$pdo = new PDO("mysql:host=localhost;dbname=eco-sphere;charset=utf8", "root", "");
+        self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    private static function setStorage()
-    {
-        $factory = (new Factory)
-            ->withServiceAccount('edusphere-52d6b-firebase-adminsdk-ovunl-2924b5ced8.json')
-            ->withDatabaseUri('https://edusphere-52d6b-default-rtdb.firebaseio.com/');
-
-        self::$storage = $factory->createStorage();
-    }
-
-    protected function getBdd()
-    {
-        if (self::$pdo === null) {
+    protected function getBdd(){
+        if(self::$pdo === null){
             self::setBdd();
         }
         return self::$pdo;
-    }
-
-    protected function getStorage()
-    {
-        if (self::$storage === null) {
-            self::setStorage();
-        }
-        return self::$storage;
     }
 }

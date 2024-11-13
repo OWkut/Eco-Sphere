@@ -6,7 +6,7 @@
         <div class="bg-white shadow-lg rounded-lg p-8">
           <h3 class="text-2xl font-semibold text-center mb-4">Se connecter</h3>
 
-          <form action="validation_connexion" method="post" onsubmit="return encryptPassword();">
+          <form action="validation_connexion" method="post">
             
             <hr class="my-6 border-gray-300">
             
@@ -21,9 +21,6 @@
               <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
               <div class="relative">
                 <input type="password" id="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Entrez votre mot de passe" required />
-                <button type="button" id="togglePassword" class="absolute inset-y-0 right-3 flex items-center text-gray-500">
-                  <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
-                </button>
               </div>
             </div>
 
@@ -34,21 +31,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-    const password = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
-    const eyeIcon = document.getElementById('eyeIcon');
-    togglePassword.addEventListener('click', function() {
-      const isPasswordHidden = password.type === 'password';
-      password.type = isPasswordHidden ? 'text' : 'password';
-      eyeIcon.classList.toggle('fa-eye-slash');
-      eyeIcon.classList.toggle('fa-eye');
-    });
-    function encryptPassword() {
-      const hashedPassword = CryptoJS.SHA256(password.value).toString();
-      password.value = hashedPassword;
-      return true; 
-    }
-  </script>
 </section>
