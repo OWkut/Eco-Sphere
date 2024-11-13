@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
 RUN a2enmod rewrite
 
 # Copier le code PHP dans le répertoire public de Apache
-COPY ./src /var/www/html/
+COPY ./ /var/www/html/
 
 # Exposer le port 80 (par défaut pour Apache)
 EXPOSE 80
