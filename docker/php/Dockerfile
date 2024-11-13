@@ -11,8 +11,8 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite ssl
 
 # Copier les fichiers SSL dans le conteneur (vous devrez avoir des certificats SSL valides ou auto-signés)
-COPY ../../certificate.csr /etc/ssl/certs/
-COPY ../../private.key /etc/ssl/private/
+COPY ./ssl/certificate.csr /etc/ssl/certs/
+COPY ./ssl/private.key /etc/ssl/private/
 
 # Configurer Apache pour écouter sur le port 443 et activer SSL
 RUN echo '<VirtualHost *:443>' > /etc/apache2/sites-available/default-ssl.conf && \
@@ -23,7 +23,11 @@ RUN echo '<VirtualHost *:443>' > /etc/apache2/sites-available/default-ssl.conf &
     echo '</VirtualHost>' >> /etc/apache2/sites-available/default-ssl.conf
 
 # Activer le site SSL
+COPY ./apache-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN a2ensite default-ssl.conf
 
 # Exposer les ports 443
 EXPOSE 443
+
+# Redémarrer Apache
+CMD ["apache2-foreground"]  
