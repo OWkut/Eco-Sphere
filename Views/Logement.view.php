@@ -119,6 +119,12 @@ if ($_SESSION['action'] == 'ajouter') {
                             <input type="hidden" name="annonce_id" value="<?php echo $annonce['annonce_id']; ?>">
                             <button type="submit" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Voir plus</button>
                         </form>
+                        <?php if (!empty($_SESSION['profil']) && $_SESSION['profil']['role'] === 'Admin') : ?>
+                        <form action="supprimer_annonce" method="POST" class="inline-block">
+                            <input type="hidden" name="annonce_id" value="<?php echo $annonce['annonce_id']; ?>">
+                            <button type="submit" class="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 ml-2">Supprimer</button>
+                        </form>
+                    <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

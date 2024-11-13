@@ -10,8 +10,6 @@
             <?php if(!empty($_SESSION['profil']['role']) && $_SESSION['profil']['role']==="Utilisateurs") : ?>
               <a href="<?= URL ?>echange" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Echanges</a>
             <?php endif; ?>
-            <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Services</a>
-            <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
           </div>
         </div>
         <div class="flex items-center">
@@ -50,7 +48,6 @@
           <div class="-mr-2 flex sm:hidden">
             <button type="button" class="bg-blue-600 inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-blue-700 focus:outline-none">
               <span class="sr-only">Open menu</span>
-              <!-- Heroicon: Menu -->
               <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
               </svg>
@@ -58,23 +55,5 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="sm:hidden">
-      <div class="pt-2 pb-3 space-y-1">
-        <a href="<? URL ?>accueil" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <?php if(!empty($_SESSION['profil']['role']) && $_SESSION['profil']['role']==="Utilisateurs") : ?>
-              <a href="<?= URL ?>echange" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Echanges</a>
-        <?php endif; ?>
-        <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Services</a>
-        <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Contact</a>
-      </div>
-      <?php if(empty($_SESSION['profil'])) : ?>
-      <div class="pt-4 pb-3 border-t border-gray-200">
-        <a href="<?= URL ?>connexion" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Login</a>
-        <a href="<?= URL ?>inscription" class="block bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-base font-medium mt-2">Sign Up</a>
-      </div>
-      <?php endif; ?>
     </div>
 </nav>

@@ -127,6 +127,13 @@ try {
             }
             break;
         
+        case "supprimer_annonce":
+            if (!empty($_SESSION['profil']) && $_SESSION['profil']['role'] === "Admin") {
+                $annonce_id = htmlspecialchars($_POST['annonce_id'], ENT_QUOTES, 'UTF-8');
+                $administrateurController->supprimer_annonce($annonce_id);
+            } 
+            break;
+
         case "plus_infos_logement":
             if(!empty($_SESSION['profil'])){
                 $annonce_id=$_POST['annonce_id'];
@@ -145,7 +152,7 @@ try {
         case "deconnexion":
             $visiteurController->deconnexion();
             break;
-  
+        
     }
 } catch (Exception $e) {
     echo ("La page n'existe pas");

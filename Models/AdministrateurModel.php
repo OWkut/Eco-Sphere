@@ -29,5 +29,13 @@ class AdministrateurModel extends db
         $stmt->execute();
         $stmt->closeCursor();
     }
+
+    public function supprimerAnnonce($annonce_id) {
+        $req = "DELETE FROM annonces WHERE id = :annonce_id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(':annonce_id', $annonce_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $stmt->closeCursor();
+    }
     
 }

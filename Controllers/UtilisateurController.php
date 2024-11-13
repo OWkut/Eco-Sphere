@@ -44,7 +44,7 @@ class UtilisateurController extends MainController{
         header("Location: " . URL . "echange");
     }
 
-    public function ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images){
+    public function ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface){
         $this->UtilisateurModel->ajouterAnnonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface);
         header("Location: " . URL . "logement");
     }

@@ -35,4 +35,9 @@ class AdministrateurController extends MainController
         header("Location: ". URL . "droits");
     }
 
+    public function supprimer_annonce($id){
+        $this->AdministrateurModel->supprimerAnnonce($id);
+        header("Location: ". URL . "logement");
+    }
+
 }
