@@ -1,9 +1,5 @@
 <?php
 
-require './Public/vendor/autoload.php';
-
-use Kreait\Firebase\Factory;
-
 abstract class db
 {
     private static $pdo;
