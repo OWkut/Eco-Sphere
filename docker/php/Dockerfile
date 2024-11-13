@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 RUN a2enmod rewrite ssl
 
 # Copier les fichiers SSL dans le conteneur (vous devrez avoir des certificats SSL valides ou auto-signés)
-COPY ./certificate.crt /etc/ssl/certs/
+COPY ./certificate.csr /etc/ssl/certs/
 COPY ./private.key /etc/ssl/private/
 
 # Configurer Apache pour écouter sur le port 443 et activer SSL
