@@ -37,7 +37,7 @@ class UtilisateurModel extends db
         foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
             $fileType = mime_content_type($tmp_name);
             if (in_array($fileType, ['image/jpeg', 'image/png', 'image/gif'])) {
-                $uploadDir = 'uploads/images/';
+                $uploadDir = 'Public/images/';
                 $fileName = uniqid() . '-' . basename($_FILES['images']['name'][$key]);
                 $uploadPath = $uploadDir . $fileName;
                 if (move_uploaded_file($tmp_name, $uploadPath)) {

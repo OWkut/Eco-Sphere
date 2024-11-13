@@ -22,7 +22,7 @@ class UtilisateurController extends MainController{
 
     public function ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images){
         $this->UtilisateurModel->ajouterAnnonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images);
-        //header("Location: " . URL . "logement");
+        header("Location: " . URL . "logement");
     }
 
 }
