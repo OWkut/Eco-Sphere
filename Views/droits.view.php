@@ -20,9 +20,9 @@
                             <td class="px-6 py-4"></td>
                         <?php else : ?>
                             <td class="px-6 py-4">
-                                <form action="<?= URL ?>validation_modificationRole" method="POST" class="inline">
+                                <form action="<?= URL ?>modifier_role" method="POST" class="inline">
                                     <input type="hidden" name="email" value="<?= $utilisateur['email'] ?>" />
-                                    <select name="rol" class="form-select bg-white border border-gray-300 rounded-lg py-2 px-5 text-lg focus:ring-2 focus:ring-blue-500 hover:bg-indigo-50 transition duration-300" onchange="confirm('Confirmez-vous la modification ?') ? submit() : document.location.reload()">
+                                    <select name="role" class="form-select bg-white border border-gray-300 rounded-lg py-2 px-5 text-lg focus:ring-2 focus:ring-blue-500 hover:bg-indigo-50 transition duration-300" onchange="confirm('Confirmez-vous la modification ?') ? submit() : document.location.reload()">
                                         <option value="Utilisateurs" <?= $utilisateur['role'] === "Utilisateurs" ? "selected" : ""?>>Utilisateur</option>
                                         <option value="Admin" <?= $utilisateur['role'] === "Admin" ? "selected" : ""?>>Administrateur</option>
                                     </select>

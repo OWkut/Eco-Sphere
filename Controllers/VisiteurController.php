@@ -5,9 +5,11 @@ require_once("./Controllers/MainController.php");
 
 class VisiteurController extends MainController{
     private $VisiteurModel;
+
     public function __construct(){
         $this->VisiteurModel = new VisiteurModel();
     }
+
     public function accueil(){
         $data_page = [
             "page_description" => "Description de la page d'accueil",
@@ -75,6 +77,23 @@ class VisiteurController extends MainController{
         $passwordCrypte = password_hash($password, PASSWORD_DEFAULT);
         $this->VisiteurModel->inscription($nom,$prenom,$email,$telephone,$info,$passwordCrypte);
         header("Location: ". URL . "accueil");
+    }
+
+    public function profil(){
+        $data=$this->VisiteurModel->getInfoPerso();
+        $data_page = [
+            "page_description" => "Description du profil",
+            "page_title" => "Profil",
+            "user" => $data,
+            "view" => "Views/Profil.view.php",
+            "template" => "Views/common/template.php"
+        ];
+        $this->genererPage($data_page);
+    }
+
+    public function modifierInfo($email,$info){
+        $this->VisiteurModel->modifierInfo($email,$info);
+        header("Location: " . URL . "profil");
     }
 
 }

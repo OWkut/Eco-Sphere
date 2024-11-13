@@ -66,16 +66,29 @@ try {
             break;
         case "supprimer_utilisateur":
             if(!empty($_SESSION['profil']) && $_SESSION['profil']['role']==="Admin"){
-                $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTD-8');
+                $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
                 $administrateurController->supprimer_utilisateur($email);
             }
             break;
         
         case "modifier_role":
             if(!empty($_SESSION['profil']) && $_SESSION['profil']['role']==="Admin"){
-                $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTD-8');
-                $administrateurController->supprimer_utilisateur($email);
+                $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
+                $role=htmlspecialchars($_POST['role'],ENT_QUOTES,'UTF-8');
+                $administrateurController->validation_modificationRole($email,$role);
             }
+            break;
+        
+        case "profil":
+            if(!empty($_SESSION['profil'])){
+                $visiteurController->profil();
+            }
+            break;
+        
+        case "modifier_info":
+            $info=htmlspecialchars($_POST['infos'],ENT_QUOTES,'UTF-8');
+            $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
+            $visiteurController->modifierInfo($email,$info);
             break;
 
         case "deconnexion":

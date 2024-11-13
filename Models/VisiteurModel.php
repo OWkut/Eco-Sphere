@@ -40,4 +40,24 @@ class VisiteurModel extends db
         $stmt->closeCursor();
         return $estModifier;
     }
+
+    public function getInfoPerso(){
+        $req = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":email", $_SESSION['profil']['email'], PDO::PARAM_STR);
+        $stmt->execute();
+        $resultat = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $resultat;
+    }
+
+    public function modifierInfo($email,$info){
+        $req = "UPDATE users SET infos = :infos WHERE email = :email";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":infos", $info, PDO::PARAM_STR);
+        $stmt->bindValue(":email", $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $stmt->closeCursor();
+    }
+
 }
