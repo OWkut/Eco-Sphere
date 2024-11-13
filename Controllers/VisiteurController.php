@@ -1,41 +1,35 @@
 <?php
 
-require_once("./Models/VisiteurModel.php");
-require_once("./Controllers/MainController.php");
+require_once "./Models/VisiteurModel.php";
+require_once "./Controllers/MainController.php";
 
 class VisiteurController extends MainController{
     private $VisiteurModel;
+    private $template;
 
     public function __construct(){
         $this->VisiteurModel = new VisiteurModel();
+        $this->template = "Views/common/template.php";
     }
 
     public function accueil(){
         $data_page = [
-            "page_description" => "Description de la page d'accueil",
-            "page_title" => "Titre de la page d'accueil",
+            "page_description" => "page d'accueil de éco-sphere",
+            "page_title" => "Eco-Sphere",
             "view" => "Views/Accueil.view.php",
-            "template" => "Views/common/template.php"
+            "template" => $this->template
         ];
         $this->genererPage($data_page);
     }
 
-    public function echange(): void{
-        $data_page = [
-            "page_description" => "Page d'échange",
-            "page_title" => "échanges",
-            "view" => "Views/Echange.view.php",
-            "template" => "Views/common/template.php"
-        ];
-        $this->genererPage($data_page);
-    }
+   
 
     public function inscription(){
         $data_page = [
-            "page_description" => "Description de la page d'accueil",
-            "page_title" => "Titre de la page d'accueil",
-            "view" => "Views/Inscription.view.php",
-            "template" => "Views/common/template.php"
+            "page_description" => "page d'accueil de éco-sphere",
+            "page_title" => "Eco-Sphere",
+            "view" => "Views/Accueil.view.php",
+            "template" => $this->template
         ];
         $this->genererPage($data_page);
     }
@@ -45,7 +39,7 @@ class VisiteurController extends MainController{
             "page_description" => "Description de la page d'accueil",
             "page_title" => "Titre de la page d'accueil",
             "view" => "Views/Connexion.view.php",
-            "template" => "Views/common/template.php"
+            "template" => $this->template
         ];
         $this->genererPage($data_page);
     }

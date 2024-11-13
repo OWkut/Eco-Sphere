@@ -5,9 +5,11 @@
           <a href="#" class="flex-shrink-0 flex items-center">
             <span class="text-xl font-bold text-blue-600">Eco-Sphere</span>
           </a>
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-            <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">About</a>
+          <div class="flex items-center hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="<?= URL ?>accueil" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+            <?php if(!empty($_SESSION['profil']['role']) && $_SESSION['profil']['role']==="Utilisateurs") : ?>
+              <a href="<?= URL ?>echange" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Echanges</a>
+            <?php endif; ?>
             <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Services</a>
             <a href="#" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
           </div>
@@ -15,7 +17,7 @@
         <div class="flex items-center">
             <?php if(!empty($_SESSION['profil']['role']) && $_SESSION['profil']['role']==="Admin") : ?>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <a href="<?= URL ?>\droits" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Gestion des comptes</a>
+                    <a href="<?= URL ?>droits" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Gestion des comptes</a>
                 </div>
             <?php endif; ?>
         </div>
@@ -32,8 +34,8 @@
         <div class="flex items-center">
             <?php if(empty($_SESSION['profil'])) : ?>
           <div class="hidden sm:ml-6 sm:flex sm:items-center">
-            <a href="<?= URL ?>\connexion" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Login</a>
-            <a href="<?= URL ?>\inscription" class="ml-4 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Sign Up</a>
+            <a href="<?= URL ?>connexion" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+            <a href="<?= URL ?>inscription" class="ml-4 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">Sign Up</a>
           </div>
           <?php else: ?>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
@@ -55,15 +57,17 @@
     <!-- Mobile menu -->
     <div class="sm:hidden">
       <div class="pt-2 pb-3 space-y-1">
-        <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="<?= URL ?>\echange" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Echanges</a>
+        <a href="<? URL ?>accueil" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Home</a>
+        <?php if(!empty($_SESSION['profil']['role']) && $_SESSION['profil']['role']==="Utilisateurs") : ?>
+              <a href="<?= URL ?>echange" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Echanges</a>
+        <?php endif; ?>
         <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Services</a>
         <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Contact</a>
       </div>
       <?php if(empty($_SESSION['profil'])) : ?>
       <div class="pt-4 pb-3 border-t border-gray-200">
-        <a href="<?= URL ?>\connexion" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Login</a>
-        <a href="<?= URL ?>\inscription" class="block bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-base font-medium mt-2">Sign Up</a>
+        <a href="<?= URL ?>connexion" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Login</a>
+        <a href="<?= URL ?>inscription" class="block bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-base font-medium mt-2">Sign Up</a>
       </div>
       <?php endif; ?>
     </div>
