@@ -5,7 +5,7 @@ services:
   php:
     build:
       context: ./
-      dockerfile: docker/php     # Répertoire où se trouve le Dockerfile PHP
+      dockerfile: docker/php/Dockerfile     # Répertoire où se trouve le Dockerfile PHP
     container_name: php-container
     ports:
       - "443:443"                  # Mappe le port 8080 du host au port 80 du conteneur
