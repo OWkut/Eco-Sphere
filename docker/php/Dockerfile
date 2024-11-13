@@ -23,7 +23,6 @@ RUN echo '<VirtualHost *:443>' > /etc/apache2/sites-available/default-ssl.conf &
     echo '</VirtualHost>' >> /etc/apache2/sites-available/default-ssl.conf
 
 # Activer le site SSL
-COPY ./apache-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 RUN a2ensite default-ssl.conf
 
 # Exposer les ports 443
