@@ -76,7 +76,7 @@ if ($_SESSION['action'] == 'ajouter') {
     <?php
 } else {
     ?>
-    <form method="GET" action="" class="mb-8">
+    <form method="POST" action="logement" class="mb-8">
         <div class="grid grid-cols-3 gap-4">
             <div>
                 <label class="block text-gray-700">Type de logement</label>
@@ -100,7 +100,33 @@ if ($_SESSION['action'] == 'ajouter') {
         </div>
         <button type="submit" class="mt-4 bg-blue-500 text-white p-2 rounded">Rechercher</button>
     </form>
+    <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-bold mb-6">Toutes les annonces</h1>
 
+    <?php if (count($annonces) > 0) : ?>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <?php foreach ($annonces as $annonce) : ?>
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold"><?php echo htmlspecialchars($annonce['titre']); ?></h3>
+                        <p class="text-gray-700"><?php echo htmlspecialchars($annonce['type_logement']); ?></p>
+                        <p class="text-gray-700"><?php echo htmlspecialchars($annonce['ville']); ?> - <?php echo htmlspecialchars($annonce['prix']); ?>€</p>
+                        <p class="text-gray-500"><?php echo htmlspecialchars($annonce['description']); ?></p>
+                        <p class="text-sm text-gray-500">Surface : <?php echo htmlspecialchars($annonce['surface']); ?> m²</p>
+                        <p class="text-sm text-gray-500">Proximité : <?php echo htmlspecialchars($annonce['proximite']); ?></p>
+                        <p class="text-sm text-gray-500">Publié le : <?php echo date('d/m/Y', strtotime($annonce['date_publication'])); ?></p>
+                        <form action="plus_infos_logement" method="POST">
+                            <input type="hidden" name="annonce_id" value="<?php echo $annonce['annonce_id']; ?>">
+                            <button type="submit" class="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Voir plus</button>
+                        </form>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php else : ?>
+        <p>Aucune annonce disponible pour le moment.</p>
+    <?php endif; ?>
+</div>
   
     <?php
 }

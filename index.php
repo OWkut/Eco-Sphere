@@ -95,7 +95,10 @@ try {
         
         case "logement":
             if(!empty($_SESSION['profil'])){
-                $utilisateurController->logement();
+                $type_logement = isset($_POST['type_logement']) ? $_POST['type_logement'] : '';
+                $prix_max = isset($_POST['prix_max']) ? $_POST['prix_max'] : '';
+                $ville = isset($_POST['ville']) ? $_POST['ville'] : '';
+                $utilisateurController->logement($type_logement,$prix_max,$ville);
             }
             break;
         
@@ -116,6 +119,21 @@ try {
                 }
                 $utilisateurController->ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images);
             }
+            break;
+        
+        case "plus_infos_logement":
+            if(!empty($_SESSION['profil'])){
+                $annonce_id=$_POST['annonce_id'];
+                $utilisateurController->plus_infos_logement($annonce_id);
+            }
+            break;
+        
+        case "aides":
+            $utilisateurController->aide();
+            break;
+        
+        case "evenement":
+            $utilisateurController->evenement();
             break;
 
         case "deconnexion":

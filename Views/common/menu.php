@@ -22,10 +22,16 @@
         <div class="flex items-center">
             <?php if(!empty($_SESSION['profil'])) : ?>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="<?= URL ?>evenement" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Evenement</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     <a href="<?= URL ?>profil" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Profil</a>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     <a href="<?= URL ?>logement" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Recherche de logement</a>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <a href="<?= URL ?>aides" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Conseils Pratiques</a>
                 </div>
             <?php endif; ?>
         </div>
