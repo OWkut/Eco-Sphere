@@ -13,9 +13,6 @@ RUN echo "ServerName eco-sphere.3il.fr" >> /etc/apache2/apache2.conf
 # Activer les modules nécessaires
 RUN a2enmod rewrite
 
-# Supprimer la configuration SSL et ne pas l'utiliser
-# (Ne pas activer mod_ssl ou ajouter de configuration SSL)
-
 # Exposer le port 80 (non sécurisé)
 EXPOSE 443
 

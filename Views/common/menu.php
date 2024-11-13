@@ -34,7 +34,7 @@
     <div class="sm:hidden">
       <div class="pt-2 pb-3 space-y-1">
         <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">About</a>
+        <a href="<?= URL ?>\echange" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Echanges</a>
         <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Services</a>
         <a href="#" class="block text-gray-900 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Contact</a>
       </div>
