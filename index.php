@@ -4,9 +4,11 @@ session_start();
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
 require_once("Controllers/VisiteurController.php");
 require_once("Controllers/AdministrateurController.php");
+require_once("Controllers/UtilisateurController.php");
 
 $visiteurController = new VisiteurController();
 $administrateurController = new AdministrateurController();
+$utilisateurController = new UtilisateurController();
 
 try {
     if (empty($_GET['page'])) {
@@ -90,12 +92,27 @@ try {
             $email=htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
             $visiteurController->modifierInfo($email,$info);
             break;
+        
+        case "logement":
+            if(!empty($_SESSION['profil'])){
+                $utilisateurController->logement();
+            }
+            break;
+        
+        case "ajouter_annonce":
+            if(!empty($_SESSION['profil'])){
+                $titre = $_POST['titre'];
+                $type_logement = $_POST['type_logement'];
+                $prix = $_POST['prix'];
+                $description = $_POST['description'];
+                $ville = $_POST['ville'];
+                
+            }
 
         case "deconnexion":
             $visiteurController->deconnexion();
             break;
-
-        
+  
     }
 } catch (Exception $e) {
     echo ("La page n'existe pas");

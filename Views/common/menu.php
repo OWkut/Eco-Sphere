@@ -25,7 +25,7 @@
                     <a href="<?= URL ?>profil" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Profil</a>
                 </div>
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
-                    <a href="<?= URL ?>profil" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Profil</a>
+                    <a href="<?= URL ?>logement" class="text-gray-900 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Recherche de logement</a>
                 </div>
             <?php endif; ?>
         </div>
