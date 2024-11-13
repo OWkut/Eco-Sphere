@@ -20,7 +20,18 @@ try {
 
     switch ($page) {
         case "echange":
-            $visiteurController->echange();
+            $utilisateurController->echange();
+            break;
+        case "creer_echange":
+            $item_offert = htmlspecialchars($_POST['item_offert'],ENT_QUOTES,'UTF-8');
+            $description = htmlspecialchars($_POST['description'],ENT_QUOTES,'UTF-8');
+            $utilisateurController->creer_echange($item_offert, $description);
+            break;
+        case "repondre_echange":
+            $reponse = htmlspecialchars($_POST['message'],ENT_QUOTES,'UTF-8');
+            $id_offre = $_POST['offre'];
+            $utilisateurController->repondre_echange($id_offre, $reponse);
+            break;
         case "accueil":
             $visiteurController->accueil();
             break;
@@ -112,12 +123,7 @@ try {
                 $adresse=htmlspecialchars($_POST['adresse'],ENT_QUOTES,'UTF-8');
                 $proximite=htmlspecialchars($_POST['proximite'],ENT_QUOTES,'UTF-8');
                 $surface=$_POST['surface'];
-                if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
-                    $images = $_FILES['images'];
-                } else {
-                    $images = null; 
-                }
-                $utilisateurController->ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images);
+                $utilisateurController->ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface);
             }
             break;
         
