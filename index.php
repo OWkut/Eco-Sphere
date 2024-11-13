@@ -2,8 +2,8 @@
 session_start();
 
 define("URL", str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://" . $_SERVER['HTTP_HOST'] . $_SERVER["PHP_SELF"]));
-require_once("controllers/VisiteurController.php");
-require_once("controllers/AdministrateurController.php");
+require_once("Controllers/VisiteurController.php");
+require_once("Controllers/AdministrateurController.php");
 
 $visiteurController = new VisiteurController();
 $administrateurController = new AdministrateurController();
@@ -17,6 +17,8 @@ try {
     }
 
     switch ($page) {
+        case "echange":
+            $visiteurController->echange();
         case "accueil":
             $visiteurController->accueil();
             break;
