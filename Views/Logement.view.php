@@ -24,7 +24,7 @@ if (!isset($_SESSION['action'])) {
 <?php
 if ($_SESSION['action'] == 'ajouter') {
     ?>
-    <form action="ajouter_annonce.php" method="POST" class="bg-white p-6 rounded-lg shadow-md mb-8">
+    <form action="ajouter_annonce" method="POST" class="bg-white p-6 rounded-lg shadow-md mb-8" enctype="multipart/form-data">
         <h2 class="text-2xl font-bold mb-4">Ajouter une annonce</h2>
 
         <div class="mb-4">
@@ -42,15 +42,25 @@ if ($_SESSION['action'] == 'ajouter') {
                 <option value="colocation">Colocation</option>
             </select>
         </div>
-
+        <div class="mb-4">
+            <label for="images" class="block text-gray-700">Images de l'annonce</label>
+            <input type="file" name="images[]" id="images" class="w-full p-2 border border-gray-300 rounded" multiple>
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-gray-700">Description</label>
+            <textarea name="description" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+        </div>
         <div class="mb-4">
             <label for="prix" class="block text-gray-700">Prix</label>
             <input type="number" id="prix" name="prix" class="w-full p-2 border border-gray-300 rounded" required>
         </div>
-
         <div class="mb-4">
-            <label for="description" class="block text-gray-700">Description</label>
-            <textarea name="description" id="description" rows="4" class="w-full p-2 border border-gray-300 rounded" required></textarea>
+            <label for="surface" class="block text-gray-700">Surface</label>
+            <input type="text" name="surface" id="surface" class="w-full p-2 border border-gray-300 rounded" required>
+        </div>
+        <div class="mb-4">
+            <label for="proximite" class="block text-gray-700">Proximité</label>
+            <input type="text" name="proximite" id="proximite" class="w-full p-2 border border-gray-300 rounded" required>
         </div>
         <div class="mb-4">
             <label for="adresse" class="block text-gray-700">Adresse</label>

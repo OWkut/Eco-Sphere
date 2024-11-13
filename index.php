@@ -106,8 +106,17 @@ try {
                 $prix = $_POST['prix'];
                 $description = $_POST['description'];
                 $ville = $_POST['ville'];
-                
+                $adresse=htmlspecialchars($_POST['adresse'],ENT_QUOTES,'UTF-8');
+                $proximite=htmlspecialchars($_POST['proximite'],ENT_QUOTES,'UTF-8');
+                $surface=$_POST['surface'];
+                if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
+                    $images = $_FILES['images'];
+                } else {
+                    $images = null; 
+                }
+                $utilisateurController->ajouter_annonce($titre,$type_logement,$prix,$description,$ville,$adresse,$proximite,$surface,$images);
             }
+            break;
 
         case "deconnexion":
             $visiteurController->deconnexion();
