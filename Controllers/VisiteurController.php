@@ -28,7 +28,7 @@ class VisiteurController extends MainController{
         $data_page = [
             "page_description" => "page d'accueil de éco-sphere",
             "page_title" => "Eco-Sphere",
-            "view" => "Views/Accueil.view.php",
+            "view" => "Views/Inscription.view.php",
             "template" => $this->template
         ];
         $this->genererPage($data_page);
