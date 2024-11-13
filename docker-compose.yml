@@ -7,9 +7,9 @@ services:
       context: ./docker/php     # Répertoire où se trouve le Dockerfile PHP
     container_name: php-container
     ports:
-      - "8080:443"                  # Mappe le port 8080 du host au port 80 du conteneur
+      - "443:443"                  # Mappe le port 8080 du host au port 80 du conteneur
     volumes:
-      - ./var:/var/www/html        # Monte le répertoire contenant votre code PHP dans le conteneur
+      - ./:/var/www/html        # Monte le répertoire contenant votre code PHP dans le conteneur
     depends_on:
       - mysql                     # Dépend de MySQL pour s'assurer qu'il démarre d'abord
     networks:
