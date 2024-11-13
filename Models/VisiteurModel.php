@@ -21,7 +21,6 @@ class VisiteurModel extends db
         $passwordBD=$data['psw'];
         $role=$data['role'];
         if(password_verify($password,$passwordBD)){
-            echo("a");
             return $role;
         }
         return null;

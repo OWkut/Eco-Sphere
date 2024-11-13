@@ -51,7 +51,7 @@ class VisiteurController extends MainController{
 
     public function valider_connexion($email, $password){
         $role=$this->VisiteurModel->connexionValide($email, $password);
-        /*if ($role!=null) {
+        if ($role!=null) {
             $_SESSION['profil'] = [
                 "email" => $email,
                 "role" =>$role
@@ -59,7 +59,7 @@ class VisiteurController extends MainController{
            header("Location: " . URL . "accueil");
         } else {
             header("Location: " . URL . "connexion");
-        }*/
+        }
     }
 
     public function deconnexion(){
