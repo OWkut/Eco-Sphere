@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd
 
-
+RUN echo "ServerName eco-sphere.3il.fr" >> /etc/apache2/apache2.conf
 
 # Exposer le port 443
 EXPOSE 443
