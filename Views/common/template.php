@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="<?= $page_description; ?>">
 
-  <link rel="stylesheet" href="<?= URL ?>/public/CSS/style.css">
-
+  <link rel="stylesheet" href="<?= URL ?>/Public/CSS/style.css">
 
 </head>
 

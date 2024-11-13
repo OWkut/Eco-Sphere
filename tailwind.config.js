@@ -2,7 +2,9 @@
 module.exports = {
   content: [
     "./*.php", // inclut les fichiers PHP à la racine
-    "./**/*.php", // inclut les fichiers PHP dans les sous-dossiers
+    "./*.html", // inclut les fichiers PHP à la racine
+    "./**/*.php",
+    "./**/*.html", // inclut les fichiers PHP dans les sous-dossiers
   ],
   theme: {
     extend: {},
