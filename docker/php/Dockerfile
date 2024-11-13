@@ -14,8 +14,8 @@ RUN echo "ServerName eco-sphere.3il.fr" >> /etc/apache2/apache2.conf
 RUN a2enmod rewrite ssl
 
 # Copier les fichiers SSL dans le conteneur (utiliser certificate.crt et private.key)
-COPY ../../ssl/certificate.crt /etc/ssl/certs/
-COPY ../../ssl/private.key /etc/ssl/private/
+COPY ./ssl/certificate.crt /etc/ssl/certs/
+COPY ./ssl/private.key /etc/ssl/private/
 
 # Configurer Apache pour écouter sur le port 443 et activer SSL
 RUN echo '<VirtualHost *:443>' > /etc/apache2/sites-available/default-ssl.conf && \
